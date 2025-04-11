@@ -47,5 +47,17 @@ public class FlightService {
     public void deleteFlight(String flightNumber) {
         Flight flight = getFlightByFlightNumber(flightNumber);
         flights.remove(flight);
+        saveFlights();
+    }
+
+    public void updateFlight(String flightNumber, Flight flight) {
+        Flight existingFlight = getFlightByFlightNumber(flightNumber);
+        existingFlight.setFlightNumber(flight.getFlightNumber());
+        existingFlight.setPlaceOfDeparture(flight.getPlaceOfDeparture());
+        existingFlight.setPlaceOfArrival(flight.getPlaceOfArrival());
+        existingFlight.setFlightDuration(flight.getFlightDuration());
+        existingFlight.setOnWayFlight(flight.isOnWayFlight());
+        existingFlight.setAvailableSeats(flight.getAvailableSeats());
+        saveFlights();
     }
 }

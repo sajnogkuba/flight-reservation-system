@@ -1,7 +1,7 @@
 [ {
-  "flightNumber" : "LO123",
+  "flightNumber" : "LO124",
   "placeOfDeparture" : "Warsaw",
-  "placeOfArrival" : "Paris",
+  "placeOfArrival" : "Berlin",
   "flightDuration" : 9000.000000000,
   "availableSeats" : [ "1A", "1B", "2A" ],
   "onWayFlight" : false

@@ -40,4 +40,10 @@ public class FlightController {
         flightService.deleteFlight(flightNumber);
         return ResponseEntity.ok("Flight deleted successfully");
     }
+
+    @PutMapping("/{flightNumber}")
+    public ResponseEntity<String> updateFlight(@PathVariable String flightNumber, @RequestBody Flight flight) {
+        flightService.updateFlight(flightNumber, flight);
+        return ResponseEntity.ok("Flight updated successfully");
+    }
 }
