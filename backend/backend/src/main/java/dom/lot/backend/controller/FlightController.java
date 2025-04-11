@@ -23,6 +23,12 @@ public class FlightController {
         return ResponseEntity.ok(flights);
     }
 
+    @GetMapping("/{flightNumber}")
+    public ResponseEntity<Flight> getFlightByFlightNumber(@PathVariable String flightNumber) {
+        Flight flight = flightService.getFlightByFlightNumber(flightNumber);
+        return ResponseEntity.ok(flight);
+    }
+
     @PostMapping
     public ResponseEntity<String> addFlight(@RequestBody Flight flight) {
         flightService.addFlight(flight);
