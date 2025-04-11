@@ -14,4 +14,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleFlightNotFoundException(FlightNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", ex.getMessage()));
     }
+
+    @ExceptionHandler(PassengerNotFoundException.class)
+    public ResponseEntity<?> handlePassengerNotFoundException(PassengerNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", ex.getMessage()));
+    }
 }

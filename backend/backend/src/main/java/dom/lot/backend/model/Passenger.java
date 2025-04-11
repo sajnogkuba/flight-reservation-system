@@ -2,6 +2,7 @@ package dom.lot.backend.model;
 
 public class Passenger {
     private String firstName;
+    private int id;
     private String lastName;
     private String email;
     private String phoneNumber;
@@ -9,7 +10,8 @@ public class Passenger {
     public Passenger() {
     }
 
-    public Passenger(String firstName, String lastName, String email, String phoneNumber) {
+    public Passenger(String firstName, String lastName, String email, String phoneNumber, int id) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -46,5 +48,13 @@ public class Passenger {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
