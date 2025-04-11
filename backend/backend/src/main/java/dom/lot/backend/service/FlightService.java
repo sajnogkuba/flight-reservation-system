@@ -43,4 +43,9 @@ public class FlightService {
                 .findFirst()
                 .orElseThrow(() -> new FlightNotFoundException(flightNumber));
     }
+
+    public void deleteFlight(String flightNumber) {
+        Flight flight = getFlightByFlightNumber(flightNumber);
+        flights.remove(flight);
+    }
 }
