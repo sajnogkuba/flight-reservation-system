@@ -34,4 +34,10 @@ public class FlightController {
         flightService.addFlight(flight);
         return ResponseEntity.status(HttpStatus.CREATED).body("Flight added successfully");
     }
+
+    @DeleteMapping("/{flightNumber}")
+    public ResponseEntity<String> deleteFlight(@PathVariable String flightNumber) {
+        flightService.deleteFlight(flightNumber);
+        return ResponseEntity.ok("Flight deleted successfully");
+    }
 }
