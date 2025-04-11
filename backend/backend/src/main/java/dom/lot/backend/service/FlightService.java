@@ -5,13 +5,13 @@ import dom.lot.backend.model.Flight;
 import dom.lot.backend.util.JsonDataAccess;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 
 @Service
 public class FlightService {
-    private static final String FLIGHTS_FILE = "data/flights.json";
+    private static final String FLIGHTS_FILE = Path.of("data", "flights.json").toString();
     private List<Flight> flights;
 
     public FlightService() {
