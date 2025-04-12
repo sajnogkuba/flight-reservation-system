@@ -1,1 +1,19 @@
-[ ]
+[ {
+  "firstName" : "Kuba",
+  "id" : 1,
+  "lastName" : "Sajnóg",
+  "email" : "jakubsajnog@gmail.com",
+  "phoneNumber" : "603337347"
+}, {
+  "firstName" : "Kuba",
+  "id" : 2,
+  "lastName" : "Sajnóg",
+  "email" : "jakubsajnog@gmail.com",
+  "phoneNumber" : "603337347"
+}, {
+  "firstName" : "Marta",
+  "id" : 3,
+  "lastName" : "Sajnóg",
+  "email" : "martasajnog@gmail.com",
+  "phoneNumber" : "603337348"
+} ]

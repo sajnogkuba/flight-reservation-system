@@ -1,20 +1,16 @@
-package dom.lot.backend.model;
+package dom.lot.backend.dto;
 
-public class Reservation {
+public class ReservationRequestDto {
     private int reservationNumber;
-    /**
-     * The alreadyDeparted field is a manual operational status.
-     * It may not always correlate with the scheduled departure time due to delays or overrides.
-     */
     private boolean alreadyDeparted;
     private String seatNumber;
     private String flightNumber;
     private int passengerId;
 
-    public Reservation() {
+    public ReservationRequestDto() {
     }
 
-    public Reservation(int reservationNumber, boolean alreadyDeparted, String seatNumber, String flightNumber, int passengerId) {
+    public ReservationRequestDto(int reservationNumber, boolean alreadyDeparted, String seatNumber, String flightNumber, int passengerId) {
         this.reservationNumber = reservationNumber;
         this.alreadyDeparted = alreadyDeparted;
         this.seatNumber = seatNumber;
