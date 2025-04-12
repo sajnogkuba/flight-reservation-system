@@ -8,11 +8,13 @@ import dom.lot.backend.exception.PassengerAlreadyExistsException;
 import dom.lot.backend.exception.PassengerNotFoundException;
 import dom.lot.backend.model.Passenger;
 import dom.lot.backend.util.JsonDataAccess;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 import java.util.List;
 
+@Setter
 @Service
 public class PassengerService {
     private static final String PASSENGERS_FILE = Path.of("data", "passengers.json").toString();
@@ -22,11 +24,11 @@ public class PassengerService {
         loadPassengers();
     }
 
-    private void loadPassengers() {
+    public void loadPassengers() {
         this.passengers = JsonDataAccess.loadData(PASSENGERS_FILE, new TypeReference<>() {});
     }
 
-    private void savePassengers() {
+    public void savePassengers() {
         JsonDataAccess.saveData(PASSENGERS_FILE, passengers);
     }
 
