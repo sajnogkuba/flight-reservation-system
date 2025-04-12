@@ -57,4 +57,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", ex.getMessage()));
     }
+
+    @ExceptionHandler(EmailAlreadyInUseException.class)
+    public ResponseEntity<?> handleEmailAlreadyInUseException(EmailAlreadyInUseException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", ex.getMessage()));
+    }
 }
