@@ -19,10 +19,12 @@ public class ReservationService {
     private List<Reservation> reservations;
     private final FlightService flightService;
     private final PassengerService passengerService;
+    private final MailService mailService;
 
-    public ReservationService(FlightService flightService, PassengerService passengerService) {
+    public ReservationService(FlightService flightService, PassengerService passengerService, MailService mailService) {
         this.flightService = flightService;
         this.passengerService = passengerService;
+        this.mailService = mailService;
         loadReservations();
     }
 
@@ -60,6 +62,7 @@ public class ReservationService {
         } else {
             throw new IllegalArgumentException("Seat " + reservationRequestDto.seatNumber() + " is not available.");
         }
+        mailService.sendReservationConfirmation(passenger, flight, reservationRequestDto.seatNumber(), reservationRequestDto.reservationNumber());
         return new Reservation(
                 reservationRequestDto.reservationNumber(),
                 reservationRequestDto.alreadyDeparted(),

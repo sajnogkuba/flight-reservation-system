@@ -10,7 +10,7 @@
   "placeOfDeparture" : "Warsaw",
   "placeOfArrival" : "Warsaw",
   "flightDuration" : 9000.000000000,
-  "availableSeats" : [ "1A", "1B", "2A" ],
+  "availableSeats" : [ "1B" ],
   "onWayFlight" : false
 }, {
   "flightNumber" : "LO1230",
