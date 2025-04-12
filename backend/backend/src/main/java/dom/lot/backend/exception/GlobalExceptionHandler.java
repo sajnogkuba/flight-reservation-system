@@ -19,4 +19,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handlePassengerNotFoundException(PassengerNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", ex.getMessage()));
     }
+
+    @ExceptionHandler(ReservationNotFoundException.class)
+    public ResponseEntity<?> handleReservationNotFoundException(ReservationNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", ex.getMessage()));
+    }
 }
