@@ -1,1 +1,7 @@
-[ ]
+[ {
+  "reservationNumber" : 1001,
+  "alreadyDeparted" : false,
+  "seatNumber" : "1A",
+  "flightNumber" : "LO124",
+  "passengerId" : 0
+} ]
