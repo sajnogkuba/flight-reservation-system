@@ -9,6 +9,7 @@ import dom.lot.backend.model.Flight;
 import dom.lot.backend.util.JsonDataAccess;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
@@ -17,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Setter
 @Service
 public class FlightService {
     private static final String FLIGHTS_FILE = Path.of("data", "flights.json").toString();
@@ -26,11 +28,11 @@ public class FlightService {
         loadFlights();
     }
 
-    private void loadFlights() {
+    public void loadFlights() {
         this.flights = JsonDataAccess.loadData(FLIGHTS_FILE, new TypeReference<>() {});
     }
 
-    private void saveFlights() {
+    public void saveFlights() {
         JsonDataAccess.saveData(FLIGHTS_FILE, flights);
     }
 
@@ -90,6 +92,13 @@ public class FlightService {
 
     public void updateFlight(String flightNumber, FlightRequestDto flightRequestDto) {
         Flight existingFlight = getFlightByFlightNumber(flightNumber);
+        if (flightRequestDto.placeOfDeparture().equals(flightRequestDto.placeOfArrival())) {
+            throw new IllegalArgumentException("Place of departure cannot be equal to the place of arrival");
+        }
+        Duration duration = Duration.parse(flightRequestDto.flightDuration());
+        if(!duration.isPositive()) {
+            throw new IllegalArgumentException("Flight duration must be positive");
+        }
         existingFlight.setFlightNumber(flightRequestDto.flightNumber());
         existingFlight.setPlaceOfDeparture(flightRequestDto.placeOfDeparture());
         existingFlight.setPlaceOfArrival(flightRequestDto.placeOfArrival());
