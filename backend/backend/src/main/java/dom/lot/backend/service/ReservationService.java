@@ -56,7 +56,7 @@ public class ReservationService {
         saveReservations();
     }
 
-    public Reservation getReservationByReservationNumber(int reservationNumber) {
+    private Reservation getReservationByReservationNumber(int reservationNumber) {
         return reservations.stream()
                 .filter((reservation) -> reservationNumber == reservation.getReservationNumber())
                 .findFirst()

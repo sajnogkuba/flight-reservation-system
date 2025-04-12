@@ -16,4 +16,22 @@
   "lastName" : "Sajnóg",
   "email" : "martasajnog@gmail.com",
   "phoneNumber" : "603337348"
+}, {
+  "firstName" : "Marta",
+  "id" : 0,
+  "lastName" : "Sajnóg",
+  "email" : "martasajnog@gmail.com",
+  "phoneNumber" : "603337348"
+}, {
+  "firstName" : "Jan",
+  "id" : 4,
+  "lastName" : "Kowalski",
+  "email" : "asdadsasd@gmail.com",
+  "phoneNumber" : "603337347"
+}, {
+  "firstName" : "Jan",
+  "id" : 5,
+  "lastName" : "Kowalski",
+  "email" : "jan.kowalski@gmail.com",
+  "phoneNumber" : "603337347"
 } ]

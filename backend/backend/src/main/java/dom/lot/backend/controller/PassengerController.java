@@ -1,7 +1,10 @@
 package dom.lot.backend.controller;
 
+import dom.lot.backend.dto.PassengerRequestDto;
+import dom.lot.backend.dto.PassengerResponseDto;
 import dom.lot.backend.model.Passenger;
 import dom.lot.backend.service.PassengerService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,20 +21,20 @@ public class PassengerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Passenger>> getPassengers() {
-        List<Passenger> passengers = passengerService.getPassengers();
+    public ResponseEntity<List<PassengerResponseDto>> getPassengers() {
+        List<PassengerResponseDto> passengers = passengerService.getPassengers();
         return ResponseEntity.ok(passengers);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Passenger> getPassengerById(@PathVariable int id) {
-        Passenger passenger = passengerService.getPassengerById(id);
-        return ResponseEntity.ok(passenger);
+    public ResponseEntity<PassengerResponseDto> getPassengerById(@PathVariable int id) {
+        PassengerResponseDto passengerResponseDto = passengerService.getPassengerDtoById(id);
+        return ResponseEntity.ok(passengerResponseDto);
     }
 
     @PostMapping
-    public ResponseEntity<String> addPassenger(@RequestBody Passenger passenger) {
-        passengerService.addPassenger(passenger);
+    public ResponseEntity<String> addPassenger(@Valid @RequestBody PassengerRequestDto passengerRequestDto) {
+        passengerService.addPassenger(passengerRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Passenger added successfully");
     }
 
@@ -42,8 +45,8 @@ public class PassengerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updatePassenger(@PathVariable int id, @RequestBody Passenger passenger) {
-        passengerService.updatePassenger(id, passenger);
+    public ResponseEntity<String> updatePassenger(@PathVariable int id, @Valid @RequestBody PassengerRequestDto passengerRequestDto) {
+        passengerService.updatePassenger(id, passengerRequestDto);
         return ResponseEntity.ok("Passenger updated successfully");
     }
 }
