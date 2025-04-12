@@ -49,15 +49,19 @@ public class PassengerService {
             throw new PassengerAlreadyExistsException(passengerRequestDto.passengerId());
         }
 
-        Passenger passenger = new Passenger(
+        Passenger passenger = getPassenger(passengerRequestDto);
+        passengers.add(passenger);
+        savePassengers();
+    }
+
+    private Passenger getPassenger(PassengerRequestDto passengerRequestDto) {
+        return new Passenger(
                 passengerRequestDto.firstName(),
                 passengerRequestDto.lastName(),
                 passengerRequestDto.email(),
                 passengerRequestDto.phoneNumber(),
                 passengerRequestDto.passengerId()
         );
-        passengers.add(passenger);
-        savePassengers();
     }
 
     public Passenger getPassengerById(int id) {
