@@ -3,6 +3,7 @@ package dom.lot.backend.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import dom.lot.backend.dto.PassengerRequestDto;
 import dom.lot.backend.dto.PassengerResponseDto;
+import dom.lot.backend.exception.EmailAlreadyInUseException;
 import dom.lot.backend.exception.PassengerAlreadyExistsException;
 import dom.lot.backend.exception.PassengerNotFoundException;
 import dom.lot.backend.model.Passenger;
@@ -55,6 +56,9 @@ public class PassengerService {
     }
 
     private Passenger getPassenger(PassengerRequestDto passengerRequestDto) {
+        if (passengers.stream().anyMatch(passenger -> passenger.getEmail().equalsIgnoreCase(passengerRequestDto.email()))) {
+            throw new EmailAlreadyInUseException(passengerRequestDto.email());
+        }
         return new Passenger(
                 passengerRequestDto.firstName(),
                 passengerRequestDto.lastName(),
