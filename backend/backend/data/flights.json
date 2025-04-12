@@ -1,8 +1,29 @@
 [ {
   "flightNumber" : "LO124",
   "placeOfDeparture" : "Warsaw",
-  "placeOfArrival" : "Berlin",
+  "placeOfArrival" : "Moscow",
   "flightDuration" : 9000.000000000,
+  "availableSeats" : [ "1A", "1B", "2A" ],
+  "onWayFlight" : false
+}, {
+  "flightNumber" : "LO123",
+  "placeOfDeparture" : "Warsaw",
+  "placeOfArrival" : "Warsaw",
+  "flightDuration" : 9000.000000000,
+  "availableSeats" : [ "1A", "1B", "2A" ],
+  "onWayFlight" : false
+}, {
+  "flightNumber" : "LO1230",
+  "placeOfDeparture" : "Warsaw",
+  "placeOfArrival" : "Berlin",
+  "flightDuration" : 0.0,
+  "availableSeats" : [ "1A", "1B", "2A" ],
+  "onWayFlight" : false
+}, {
+  "flightNumber" : "LO1231",
+  "placeOfDeparture" : "Warsaw",
+  "placeOfArrival" : "Berlin",
+  "flightDuration" : 1800.000000000,
   "availableSeats" : [ "1A", "1B", "2A" ],
   "onWayFlight" : false
 } ]

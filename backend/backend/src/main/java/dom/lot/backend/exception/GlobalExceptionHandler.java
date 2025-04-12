@@ -47,4 +47,14 @@ public class GlobalExceptionHandler {
                 ));
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
+
+    @ExceptionHandler(FlightAlreadyExistsException.class)
+    public ResponseEntity<?> handleFlightAlreadyExistsException(FlightAlreadyExistsException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", ex.getMessage()));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", ex.getMessage()));
+    }
 }
