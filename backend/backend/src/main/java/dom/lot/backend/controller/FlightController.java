@@ -4,6 +4,7 @@ import dom.lot.backend.dto.FlightRequestDto;
 import dom.lot.backend.dto.FlightResponseDto;
 import dom.lot.backend.model.Flight;
 import dom.lot.backend.service.FlightService;
+import dom.lot.backend.service.ReservationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,11 @@ import java.util.List;
 @RequestMapping("/api/flights")
 public class FlightController {
     private final FlightService flightService;
+    private final ReservationService reservationService;
 
-    public FlightController(FlightService flightService) {
+    public FlightController(FlightService flightService, ReservationService reservationService) {
         this.flightService = flightService;
+        this.reservationService = reservationService;
     }
 
     @GetMapping
@@ -41,6 +44,7 @@ public class FlightController {
     @DeleteMapping("/{flightNumber}")
     public ResponseEntity<String> deleteFlight(@PathVariable String flightNumber) {
         flightService.deleteFlight(flightNumber);
+        reservationService.deleteReservationsByFlightNumber(flightNumber);
         return ResponseEntity.ok("Flight deleted successfully");
     }
 

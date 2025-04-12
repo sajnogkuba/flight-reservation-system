@@ -107,4 +107,14 @@ public class ReservationService {
 
 
     }
+
+    public void deleteReservationsByPassengerId(int id) {
+        this.reservations.removeIf(reservation -> reservation.getPassengerId() == id);
+        saveReservations();
+    }
+
+    public void deleteReservationsByFlightNumber(String flightNumber) {
+        this.reservations.removeIf(reservation -> reservation.getFlightNumber().equals(flightNumber));
+        saveReservations();
+    }
 }

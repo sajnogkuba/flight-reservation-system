@@ -2,8 +2,8 @@ package dom.lot.backend.controller;
 
 import dom.lot.backend.dto.PassengerRequestDto;
 import dom.lot.backend.dto.PassengerResponseDto;
-import dom.lot.backend.model.Passenger;
 import dom.lot.backend.service.PassengerService;
+import dom.lot.backend.service.ReservationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +15,11 @@ import java.util.List;
 @RequestMapping("/api/passengers")
 public class PassengerController {
    private final PassengerService passengerService;
+   private final ReservationService reservationService;
 
-    public PassengerController(PassengerService passengerService) {
+    public PassengerController(PassengerService passengerService, ReservationService reservationService) {
         this.passengerService = passengerService;
+        this.reservationService = reservationService;
     }
 
     @GetMapping
@@ -41,6 +43,7 @@ public class PassengerController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePassenger(@PathVariable int id) {
         passengerService.deletePassenger(id);
+        reservationService.deleteReservationsByPassengerId(id);
         return ResponseEntity.ok("Passenger deleted successfully");
     }
 
