@@ -7,6 +7,8 @@ import dom.lot.backend.exception.FlightAlreadyExistsException;
 import dom.lot.backend.exception.FlightNotFoundException;
 import dom.lot.backend.model.Flight;
 import dom.lot.backend.util.JsonDataAccess;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
@@ -107,5 +109,10 @@ public class FlightService {
                 flight.isOnWayFlight(),
                 flight.getAvailableSeats()
         );
+    }
+
+    public void removeSeatFromAvailableSeats(String seat, String flightNumber) {
+        getFlightByFlightNumber(flightNumber).getAvailableSeats().remove(seat);
+        saveFlights();
     }
 }

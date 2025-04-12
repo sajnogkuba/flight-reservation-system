@@ -3,7 +3,7 @@
   "placeOfDeparture" : "Warsaw",
   "placeOfArrival" : "Moscow",
   "flightDuration" : 9000.000000000,
-  "availableSeats" : [ "1A", "1B", "2A" ],
+  "availableSeats" : [ ],
   "onWayFlight" : false
 }, {
   "flightNumber" : "LO123",

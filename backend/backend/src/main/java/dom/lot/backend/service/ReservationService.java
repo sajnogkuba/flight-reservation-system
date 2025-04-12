@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import dom.lot.backend.dto.ReservationRequestDto;
 import dom.lot.backend.dto.ReservationResponseDto;
 import dom.lot.backend.exception.ReservationNotFoundException;
+import dom.lot.backend.model.Flight;
+import dom.lot.backend.model.Passenger;
 import dom.lot.backend.model.Reservation;
 import dom.lot.backend.util.JsonDataAccess;
 import org.springframework.stereotype.Service;
@@ -45,15 +47,26 @@ public class ReservationService {
     }
 
     public void addReservation(ReservationRequestDto reservationRequestDto) {
-        Reservation reservation = new Reservation(
+        Reservation reservation = getReservation(reservationRequestDto);
+        reservations.add(reservation);
+        saveReservations();
+    }
+
+    private Reservation getReservation(ReservationRequestDto reservationRequestDto) {
+        Passenger passenger = passengerService.getPassengerById(reservationRequestDto.passengerId());
+        Flight flight = flightService.getFlightByFlightNumber(reservationRequestDto.flightNumber());
+        if (flight.getAvailableSeats().stream().anyMatch(reservationRequestDto.seatNumber()::equals)) {
+            flightService.removeSeatFromAvailableSeats(reservationRequestDto.seatNumber(), flight.getFlightNumber());
+        } else {
+            throw new IllegalArgumentException("Seat " + reservationRequestDto.seatNumber() + " is not available.");
+        }
+        return new Reservation(
                 reservationRequestDto.reservationNumber(),
                 reservationRequestDto.alreadyDeparted(),
                 reservationRequestDto.seatNumber(),
-                reservationRequestDto.flightNumber(),
-                reservationRequestDto.passengerId()
+                flight.getFlightNumber(),
+                passenger.getId()
         );
-        reservations.add(reservation);
-        saveReservations();
     }
 
     private Reservation getReservationByReservationNumber(int reservationNumber) {
