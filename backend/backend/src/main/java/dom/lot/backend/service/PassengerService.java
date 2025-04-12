@@ -43,18 +43,18 @@ public class PassengerService {
 
     public void addPassenger(PassengerRequestDto passengerRequestDto) {
         boolean existing = passengers.stream()
-                .anyMatch(passenger -> passenger.getId() == passengerRequestDto.getPassengerId());
+                .anyMatch(passenger -> passenger.getId() == passengerRequestDto.passengerId());
 
         if (existing) {
-            throw new PassengerAlreadyExistsException(passengerRequestDto.getPassengerId());
+            throw new PassengerAlreadyExistsException(passengerRequestDto.passengerId());
         }
 
         Passenger passenger = new Passenger(
-                passengerRequestDto.getFirstName(),
-                passengerRequestDto.getLastName(),
-                passengerRequestDto.getEmail(),
-                passengerRequestDto.getPhoneNumber(),
-                passengerRequestDto.getPassengerId()
+                passengerRequestDto.firstName(),
+                passengerRequestDto.lastName(),
+                passengerRequestDto.email(),
+                passengerRequestDto.phoneNumber(),
+                passengerRequestDto.passengerId()
         );
         passengers.add(passenger);
         savePassengers();
@@ -75,10 +75,10 @@ public class PassengerService {
 
     public void updatePassenger(int id, PassengerRequestDto passengerRequestDto) {
         Passenger existingPassenger = getPassengerById(id);
-        existingPassenger.setFirstName(passengerRequestDto.getFirstName());
-        existingPassenger.setLastName(passengerRequestDto.getLastName());
-        existingPassenger.setEmail(passengerRequestDto.getEmail());
-        existingPassenger.setPhoneNumber(passengerRequestDto.getPhoneNumber());
+        existingPassenger.setFirstName(passengerRequestDto.firstName());
+        existingPassenger.setLastName(passengerRequestDto.lastName());
+        existingPassenger.setEmail(passengerRequestDto.email());
+        existingPassenger.setPhoneNumber(passengerRequestDto.phoneNumber());
         savePassengers();
     }
 

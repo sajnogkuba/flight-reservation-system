@@ -46,11 +46,11 @@ public class ReservationService {
 
     public void addReservation(ReservationRequestDto reservationRequestDto) {
         Reservation reservation = new Reservation(
-                reservationRequestDto.getReservationNumber(),
-                reservationRequestDto.isAlreadyDeparted(),
-                reservationRequestDto.getSeatNumber(),
-                reservationRequestDto.getFlightNumber(),
-                reservationRequestDto.getPassengerId()
+                reservationRequestDto.reservationNumber(),
+                reservationRequestDto.alreadyDeparted(),
+                reservationRequestDto.seatNumber(),
+                reservationRequestDto.flightNumber(),
+                reservationRequestDto.passengerId()
         );
         reservations.add(reservation);
         saveReservations();
@@ -71,11 +71,11 @@ public class ReservationService {
 
     public void updateReservation(int reservationNumber, ReservationRequestDto reservationRequestDto) {
         Reservation existingReservation = getReservationByReservationNumber(reservationNumber);
-        existingReservation.setAlreadyDeparted(reservationRequestDto.isAlreadyDeparted());
-        existingReservation.setSeatNumber(reservationRequestDto.getSeatNumber());
-        existingReservation.setFlightNumber(reservationRequestDto.getFlightNumber());
-        existingReservation.setPassengerId(reservationRequestDto.getPassengerId());
-        existingReservation.setReservationNumber(reservationRequestDto.getReservationNumber());
+        existingReservation.setAlreadyDeparted(reservationRequestDto.alreadyDeparted());
+        existingReservation.setSeatNumber(reservationRequestDto.seatNumber());
+        existingReservation.setFlightNumber(reservationRequestDto.flightNumber());
+        existingReservation.setPassengerId(reservationRequestDto.passengerId());
+        existingReservation.setReservationNumber(reservationRequestDto.reservationNumber());
         saveReservations();
     }
 
