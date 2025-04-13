@@ -1,0 +1,54 @@
+nav{
+    padding: 1rem 2rem;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    color: #252668;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #252668;
+    transition: opacity 0.2s;
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+.logo{
+    margin: 10px 0 10px 20px;
+    max-height: 4rem;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10%;
+}
+
+.container{
+    display: flex;
+    background-color: white;
+}
+
+.separator{
+    height: 3px;
+    width: 100%;
+    background-color: #252668;
+}
+
+.shadow{
+    box-shadow: 0 4px 2px -2px gray;
+}
