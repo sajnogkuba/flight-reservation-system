@@ -3,6 +3,6 @@
   "placeOfDeparture" : "Warsaw",
   "placeOfArrival" : "Moscow",
   "flightDuration" : 9000.000000000,
-  "availableSeats" : [ "1B", "2A" ],
+  "availableSeats" : [ "1B", "1A" ],
   "onWayFlight" : false
 } ]

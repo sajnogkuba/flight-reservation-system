@@ -8,11 +8,13 @@ import dom.lot.backend.model.Flight;
 import dom.lot.backend.model.Passenger;
 import dom.lot.backend.model.Reservation;
 import dom.lot.backend.util.JsonDataAccess;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 import java.util.List;
 
+@Setter
 @Service
 public class ReservationService {
     private static final String RESERVATIONS_FILE = Path.of("data", "reservations.json").toString();
@@ -28,11 +30,11 @@ public class ReservationService {
         loadReservations();
     }
 
-    private void loadReservations() {
+    public void loadReservations() {
         this.reservations = JsonDataAccess.loadData(RESERVATIONS_FILE, new TypeReference<>() {});
     }
 
-    private void saveReservations() {
+    public void saveReservations() {
         JsonDataAccess.saveData(RESERVATIONS_FILE, reservations);
     }
 
@@ -87,11 +89,15 @@ public class ReservationService {
 
     public void updateReservation(int reservationNumber, ReservationRequestDto reservationRequestDto) {
         Reservation existingReservation = getReservationByReservationNumber(reservationNumber);
-        existingReservation.setAlreadyDeparted(reservationRequestDto.alreadyDeparted());
-        existingReservation.setSeatNumber(reservationRequestDto.seatNumber());
-        existingReservation.setFlightNumber(reservationRequestDto.flightNumber());
-        existingReservation.setPassengerId(reservationRequestDto.passengerId());
-        existingReservation.setReservationNumber(reservationRequestDto.reservationNumber());
+        String oldSeatNumber = existingReservation.getSeatNumber();
+        String oldFlightNumber = existingReservation.getFlightNumber();
+        flightService.addSeatToAvailableSeats(oldSeatNumber, oldFlightNumber);
+        Reservation updatedReservation = getReservation(reservationRequestDto);
+        existingReservation.setAlreadyDeparted(updatedReservation.isAlreadyDeparted());
+        existingReservation.setSeatNumber(updatedReservation.getSeatNumber());
+        existingReservation.setFlightNumber(updatedReservation.getFlightNumber());
+        existingReservation.setPassengerId(updatedReservation.getPassengerId());
+        existingReservation.setReservationNumber(updatedReservation.getReservationNumber());
         saveReservations();
     }
 
