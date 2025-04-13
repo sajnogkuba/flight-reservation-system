@@ -83,6 +83,7 @@ public class ReservationService {
 
     public void deleteReservation(int reservationNumber) {
         Reservation reservation = getReservationByReservationNumber(reservationNumber);
+        flightService.addSeatToAvailableSeats(reservation.getSeatNumber(), reservation.getFlightNumber());
         reservations.remove(reservation);
         saveReservations();
     }
