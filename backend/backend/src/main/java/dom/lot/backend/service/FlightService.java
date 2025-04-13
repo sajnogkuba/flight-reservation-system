@@ -124,4 +124,9 @@ public class FlightService {
         getFlightByFlightNumber(flightNumber).getAvailableSeats().remove(seat);
         saveFlights();
     }
+
+    public void addSeatToAvailableSeats(String seatNumber, String flightNumber) {
+        getFlightByFlightNumber(flightNumber).getAvailableSeats().add(seatNumber);
+        saveFlights();
+    }
 }
