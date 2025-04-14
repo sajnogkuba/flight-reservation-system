@@ -10,7 +10,11 @@ const PassengerList = () => {
     const [passengers, setPassengers] = useState<Passenger[]>([]);
 
     useEffect(() => {
-        fetchPassengers();
+        const intervalId = setInterval(() => {
+            fetchPassengers();
+        }, 1000);
+
+        return () => clearInterval(intervalId);
     }, []);
 
     const fetchPassengers = () => {

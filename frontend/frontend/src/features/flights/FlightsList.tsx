@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllFlights, formatDuration } from "../../services/flightsService.ts";
+import {getAllFlights, formatDuration, deleteFlight} from "../../services/flightsService.ts";
 import ExpandableList from "../../components/ExpandableList/ExpandableList";
 import CustomButton from "../../components/Button/CustomButton.tsx";
 import {Flight} from "../../types/Flight.ts";
@@ -9,10 +9,18 @@ const PassengerList = () => {
     const [flights, setFlights] = useState<Flight[]>([]);
 
     useEffect(() => {
+        const intervalId = setInterval(() => {
+            fetchFlights();
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
+    const fetchFlights = () => {
         getAllFlights()
             .then((res) => setFlights(res.data))
             .catch((err) => console.error(err));
-    }, []);
+    };
 
     return (
         <ExpandableList
@@ -27,7 +35,9 @@ const PassengerList = () => {
                     <p>Available seats: {f.availableSeats.join(", ")}</p>
                     <div className="buttons-div">
                         <CustomButton label="Update" onClick={() => {}} />
-                        <CustomButton label="Delete" onClick={() => {}} />
+                        <CustomButton label="Delete" onClick={() => {
+                            deleteFlight(f.flightNumber).then(()=>{fetchFlights()})
+                        }} />
                     </div>
                 </>
             )}
