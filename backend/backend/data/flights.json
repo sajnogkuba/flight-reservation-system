@@ -1,1 +1,8 @@
-[ ]
+[ {
+  "flightNumber" : "LO125",
+  "placeOfDeparture" : "Warsaw",
+  "placeOfArrival" : "Berlin",
+  "flightDuration" : 23100.000000000,
+  "availableSeats" : [ "A5", "A8", "A3", "A3", "A3" ],
+  "onWayFlight" : true
+} ]
