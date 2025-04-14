@@ -4,6 +4,7 @@ import Layout from "../layout/Layout.tsx";
 import NotFoundPage from "../pages/NotFoundPage.tsx";
 import PassengersPage from "../pages/PassengersPage/PassengersPage.tsx";
 import FlightsPage from "../pages/FlightsPage/FlightsPage.tsx";
+import ReservationsPage from "../pages/ReservationsPage/ReservationsPage.tsx";
 
 
 const AppRoutes = () => {
@@ -13,6 +14,7 @@ const AppRoutes = () => {
                 <Route index element={<HomePage />} />
                 <Route path="/passengers" element={<PassengersPage />} />
                 <Route path="/flights" element={<FlightsPage />} />
+                <Route path="/reservations" element={<ReservationsPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
         </Routes>
