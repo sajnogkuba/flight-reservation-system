@@ -5,8 +5,9 @@ html, body, #root {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #606060;
+    background-color: white;
     font-family: 'Inter', sans-serif;
+    overflow: auto;
 }
 
 .main-content {
