@@ -4,4 +4,16 @@
   "email" : "jakubsajnog@gmail.com",
   "phoneNumber" : "603337347",
   "id" : 0
+}, {
+  "firstName" : "Marta",
+  "lastName" : "Milewska",
+  "email" : "marta.milewska@icloud.com",
+  "phoneNumber" : "603337347",
+  "id" : 5
+}, {
+  "firstName" : "Sajnóg-Systems",
+  "lastName" : "Sajnóg",
+  "email" : "wiktorsajnog@gmail.com",
+  "phoneNumber" : "603337347",
+  "id" : 6
 } ]
