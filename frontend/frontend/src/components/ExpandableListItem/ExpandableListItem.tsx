@@ -4,6 +4,8 @@ import "./ExpandableListItem.css";
 interface Props {
     header: ReactNode;
     children: ReactNode;
+    isExpanded: boolean;
+    onToggle: () => void;
 }
 
 const ExpandableListItem = ({ header, children }: Props) => {
