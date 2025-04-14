@@ -4,7 +4,7 @@ const ContactInfo = () => {
     return(
         <div className={"contact-info"}>
             <ul>
-                <li>Feel free to contact: </li>
+                <li>Feel free to contact:</li>
                 <li>Jakub Sajnóg</li>
                 <li>
                     tel:{" "}
@@ -16,6 +16,12 @@ const ContactInfo = () => {
                     email:{" "}
                     <a href="mailto:jakubsajnog@gmail.com" className="contact-link">
                         jakubsajnog@gmail.com
+                    </a>
+                </li>
+                <li>
+                    LinkedIn:{" "}
+                    <a href="https://www.linkedin.com/in/jakub-sajnóg-70294a28a/" className="contact-link">
+                        Jakub Sajnóg
                     </a>
                 </li>
             </ul>

@@ -4,7 +4,7 @@ import ContactInfo from "../../components/ContactInfo/ContactInfo.tsx";
 
 const Footer = () => {
     return(
-        <>
+        <div className={"container-sticky"}>
             <Separator/>
             <div className={"footer-container"}>
                 <footer className={"footer"}>
@@ -13,7 +13,7 @@ const Footer = () => {
                 <ContactInfo/>
             </div>
             <Separator/>
-        </>
+        </div>
     );
 }
 

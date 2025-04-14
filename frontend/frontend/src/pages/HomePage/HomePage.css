@@ -1,0 +1,65 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 90%;
+    padding: 1rem 1rem 4rem;
+    position: relative;
+    background-image: url("/background.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 0;
+}
+
+.homepage h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #252668;
+    z-index: 2;
+    position: relative;
+}
+
+.homepage p {
+    font-size: 1.2rem;
+    z-index: 2;
+    position: relative;
+}
+
+.recruiter-message {
+    background-color: white;
+    padding: 1rem;
+    margin: 1rem 0;
+    max-width: 80vw;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    position: relative;
+}
+
+.recruiter-message h2 {
+    font-size: 2rem;
+    color: #252668;
+}
+
+.homepage h2{
+    font-size: 2rem;
+    color: #252668;
+    z-index: 2;
+}
+
+.recruiter-message p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
