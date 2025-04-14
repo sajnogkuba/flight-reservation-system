@@ -9,10 +9,18 @@ const ReservationsList = () => {
     const [reservations, setReservations] = useState<Reservation[]>([]);
 
     useEffect(() => {
+        const intervalId = setInterval(() => {
+            fetchReservations();
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
+    const fetchReservations = () => {
         getAllReservations()
             .then((res) => setReservations(res.data))
             .catch((err) => console.error(err));
-    }, []);
+    };
 
     return (
         <ExpandableList

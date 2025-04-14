@@ -3,7 +3,7 @@ import PassengerList from "../../features/passengers/PassengerList.tsx";
 import CustomButton from "../../components/Button/CustomButton.tsx";
 import Form, { FormField } from "../../components/Form/Form.tsx";
 import { useState } from "react";
-import {createPassenger} from "../../services/passengerService.ts";
+import { createPassenger } from "../../services/passengerService.ts";
 
 const passengersFormFields: FormField[] = [
     { name: "passengerId", label: "Passenger ID: ", type: "number" },
@@ -16,7 +16,7 @@ const passengersFormFields: FormField[] = [
 const PassengersPage = () => {
     const [shouldRenderForm, setShouldRenderForm] = useState(false);
     const [formVisible, setFormVisible] = useState(false);
-    const [formError, setFormError] = useState<string | null>(null);
+    const [formError, setFormError] = useState<Record<string, string> | null>(null);
 
     const openForm = () => {
         setShouldRenderForm(true);
@@ -34,9 +34,19 @@ const PassengersPage = () => {
             setFormError(null);
             closeForm();
         } catch (error: any) {
-            const message =
-                error?.response?.data?.error || "Something went wrong. Please try again.";
-            setFormError(message);
+            const backendData = error?.response?.data;
+
+            if (backendData && typeof backendData === "object") {
+                if (backendData.error && typeof backendData.error === "string") {
+                    setFormError({ general: backendData.error });
+                } else if (Object.values(backendData).every(v => typeof v === "string")) {
+                    setFormError(backendData);
+                } else {
+                    setFormError({ general: "Unknown error occurred." });
+                }
+            } else {
+                setFormError({ general: "Something went wrong. Please try again." });
+            }
         }
     };
 

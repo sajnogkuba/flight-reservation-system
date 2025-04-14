@@ -14,7 +14,6 @@
     transform: scaleY(0);
     transform-origin: top;
     transition: all 0.3s ease;
-
 }
 
 .entity-form.show {
@@ -24,6 +23,7 @@
 
 .entity-form input,
 .entity-form select {
+    width: 90%;
     padding: 0.6rem 1rem;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -51,12 +51,11 @@
     margin-top: 1rem;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
 .form-error {
@@ -66,4 +65,27 @@
     border-radius: 8px;
     font-weight: 500;
     border: 1px solid #ffaaaa;
+}
+
+.checkbox-field label {
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    color: #333;
+}
+
+.checkbox-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: #333;
+    margin-left: 20px;
+}
+
+.checkbox-inline input[type="checkbox"] {
+    margin: 0;
+    width: 20px;
+    height: 20px;
 }

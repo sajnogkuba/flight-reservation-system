@@ -17,7 +17,7 @@ interface Props {
     onCancel: () => void;
     initialValues?: Record<string, any>;
     isVisible: boolean;
-    error?: string|null;
+    error?: Record<string, string> | null;
 }
 
 const Form = ({ fields, onSubmit, onCancel, initialValues = {}, isVisible, error }: Props) => {
@@ -47,11 +47,12 @@ const Form = ({ fields, onSubmit, onCancel, initialValues = {}, isVisible, error
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
         const transformed = { ...formState };
 
         if (
-            Array.isArray(formState.availableSeats) === false &&
-            typeof formState.availableSeats === "string"
+            typeof formState.availableSeats === "string" &&
+            !Array.isArray(formState.availableSeats)
         ) {
             transformed.availableSeats = formState.availableSeats
                 .split(",")
@@ -62,52 +63,72 @@ const Form = ({ fields, onSubmit, onCancel, initialValues = {}, isVisible, error
         onSubmit(transformed);
     };
 
+    const renderFieldError = (name: string) => {
+        if (error && error[name]) {
+            return <p className="form-error">{error[name]}</p>;
+        }
+        return null;
+    };
+
     return (
         <form onSubmit={handleSubmit} className={`entity-form ${isVisible ? "show" : ""}`}>
-            {error && <div className="form-error">{error}</div>}
+            {error?.general && (
+                <div className="form-error general-error">
+                    {error.general}
+                </div>
+            )}
+
             {fields.map(field => {
+                const value = formState[field.name];
+
                 if (field.type === "boolean") {
                     return (
-                        <label key={field.name}>
-                            <input
-                                type="checkbox"
-                                name={field.name}
-                                checked={formState[field.name]}
-                                onChange={handleChange}
-                            />
-                            {field.label}
-                        </label>
+                        <div key={field.name} className="form-field checkbox-field">
+                            <label className="checkbox-inline">
+                                <span>{field.label}</span>
+                                <input
+                                    type="checkbox"
+                                    name={field.name}
+                                    checked={value}
+                                    onChange={handleChange}
+                                />
+                            </label>
+                            {renderFieldError(field.name)}
+                        </div>
                     );
                 }
 
                 if (field.type === "select") {
                     return (
-                        <label key={field.name}>
-                            {field.label}
-                            <select
-                                name={field.name}
-                                value={formState[field.name]}
-                                onChange={handleChange}
-                            >
-                                {field.options?.map(opt => (
-                                    <option key={opt} value={opt}>
-                                        {opt}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
+                        <div key={field.name} className="form-field">
+                            <label>
+                                {field.label}
+                                <select
+                                    name={field.name}
+                                    value={value}
+                                    onChange={handleChange}
+                                >
+                                    {field.options?.map(opt => (
+                                        <option key={opt} value={opt}>{opt}</option>
+                                    ))}
+                                </select>
+                            </label>
+                            {renderFieldError(field.name)}
+                        </div>
                     );
                 }
 
                 return (
-                    <input
-                        key={field.name}
-                        name={field.name}
-                        placeholder={field.label}
-                        type={field.type}
-                        value={formState[field.name]}
-                        onChange={handleChange}
-                    />
+                    <div key={field.name} className="form-field">
+                        <input
+                            name={field.name}
+                            placeholder={field.label}
+                            type={field.type}
+                            value={value}
+                            onChange={handleChange}
+                        />
+                        {renderFieldError(field.name)}
+                    </div>
                 );
             })}
 
