@@ -6,7 +6,7 @@ const FlightsPage = () => {
     return (
         <div className={"flights-page"}>
             <div className={"overlay"}/>
-            <h1>Passengers</h1>
+            <h1>Flights</h1>
             <section className="flights-list">
                 <h2>Flights List</h2>
                 <div className={"margin-bottom-10px"}>
