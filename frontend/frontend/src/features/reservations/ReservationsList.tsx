@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {Reservation} from "../../types/Reservation.ts";
 import ExpandableList from "../../components/ExpandableList/ExpandableList.tsx";
-import Button from "../../components/Button/Button.tsx";
+import CustomButton from "../../components/Button/CustomButton.tsx";
 import {getAllReservations} from "../../services/reservationsService.ts";
 
 
@@ -26,8 +26,8 @@ const ReservationsList = () => {
                     <p>Flight: {r.flight.flightNumber}</p>
                     <p>Passenger: {r.passenger.firstName} {r.passenger.lastName}</p>
                     <div className="buttons-div">
-                        <Button label="Update" onClick={() => {}} />
-                        <Button label="Delete" onClick={() => {}} />
+                        <CustomButton label="Update" onClick={() => {}} />
+                        <CustomButton label="Delete" onClick={() => {}} />
                     </div>
                 </>
             )}

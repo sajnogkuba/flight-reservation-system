@@ -1,5 +1,5 @@
 import "./FlightsPage.css"
-import Button from "../../components/Button/Button.tsx";
+import CustomButton from "../../components/Button/CustomButton.tsx";
 import FlightsList from "../../features/flights/FlightsList.tsx";
 
 const FlightsPage = () => {
@@ -10,7 +10,7 @@ const FlightsPage = () => {
             <section className="flights-list">
                 <h2>Flights List</h2>
                 <div className={"margin-bottom-10px"}>
-                    <Button label={"Add flight"} onClick={() => {}} />
+                    <CustomButton label={"Add flight"} onClick={() => {}} />
                 </div>
                 <FlightsList />
             </section>
