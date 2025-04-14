@@ -1,0 +1,7 @@
+.buttons-div {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: flex-start;
+}
