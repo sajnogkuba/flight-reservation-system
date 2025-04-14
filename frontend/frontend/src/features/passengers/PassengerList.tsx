@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllPassengers } from "../../services/passengerService.ts";
 import ExpandableList from "../../components/ExpandableList/ExpandableList";
-import Button from "../../components/Button/Button.tsx";
+import CustomButton from "../../components/Button/CustomButton.tsx";
 import "./PassengerList.css";
 import {Passenger} from "../../types/Passenger.ts";
 
@@ -28,8 +28,8 @@ const PassengerList = () => {
                     <p>Email: {p.email}</p>
                     <p>Phone: {p.phoneNumber}</p>
                     <div className="buttons-div">
-                        <Button label="Update" onClick={() => {}} />
-                        <Button label="Delete" onClick={() => {}} />
+                        <CustomButton label="Update" onClick={() => {}} />
+                        <CustomButton label="Delete" onClick={() => {}} />
                     </div>
                 </>
             )}
