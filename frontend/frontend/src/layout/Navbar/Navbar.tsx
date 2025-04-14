@@ -11,6 +11,7 @@ const Navbar = () => {
                 <img src={logo} alt="Logo" className="logo"/>
                 <nav>
                     <ul>
+                        <li><Link to={"/"}>Home</Link></li>
                         <li><Link to={"/passengers"}>Passengers</Link></li>
                         <li><Link to={"/flights"}>Flights</Link></li>
                         <li><Link to={"/reservations"}>Reservations</Link></li>
