@@ -1,24 +1,25 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import "./ExpandableListItem.css";
 
 interface Props {
-    isExpanded: boolean;
-    onToggle: () => void;
     header: ReactNode;
     children: ReactNode;
 }
 
-const ExpandableListItem = ({ isExpanded, onToggle, header, children }: Props) => {
+const ExpandableListItem = ({ header, children }: Props) => {
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
         <div
-            className={`list-card ${isExpanded ? "expanded" : ""}`}
-            onClick={onToggle}
+            className={`list-card ${isHovered ? "expanded" : ""}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
             <div className="flex-card">
                 {header}
-                <span className={`chevron ${isExpanded ? "open" : ""}`}>⌄</span>
+                <span className={`chevron ${isHovered ? "open" : ""}`}>⌄</span>
             </div>
-            <div className={`details ${isExpanded ? "show" : ""}`}>
+            <div className={`details ${isHovered ? "show" : ""}`}>
                 {children}
             </div>
         </div>
