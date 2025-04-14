@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllPassengers } from "../../services/passengerService.ts";
+import {deletePassenger, getAllPassengers} from "../../services/passengerService.ts";
 import ExpandableList from "../../components/ExpandableList/ExpandableList";
 import CustomButton from "../../components/Button/CustomButton.tsx";
 import "./PassengerList.css";
@@ -10,10 +10,14 @@ const PassengerList = () => {
     const [passengers, setPassengers] = useState<Passenger[]>([]);
 
     useEffect(() => {
+        fetchPassengers();
+    }, []);
+
+    const fetchPassengers = () => {
         getAllPassengers()
             .then((res) => setPassengers(res.data))
             .catch((err) => console.error(err));
-    }, []);
+    };
 
     return (
         <ExpandableList
@@ -29,7 +33,9 @@ const PassengerList = () => {
                     <p>Phone: {p.phoneNumber}</p>
                     <div className="buttons-div">
                         <CustomButton label="Update" onClick={() => {}} />
-                        <CustomButton label="Delete" onClick={() => {}} />
+                        <CustomButton label="Delete" onClick={() => {
+                            deletePassenger(p.id).then(() => fetchPassengers())
+                        }} />
                     </div>
                 </>
             )}
