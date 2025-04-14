@@ -1,13 +1,14 @@
-* {
+html, body, #root {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    color: #222;
     line-height: 1.5;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: #606060;
+    font-family: 'Inter', sans-serif;
+}
+
+.main-content {
+    flex: 1;
 }
