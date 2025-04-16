@@ -36,32 +36,18 @@ Aplikacja umożliwia kompleksowe zarządzanie rezerwacjami lotniczymi — tworze
 
 ---
 
-### 🚀 Jak uruchomić aplikację lokalnie (Docker)
+## 🚀 Jak uruchomić aplikację lokalnie (Docker)
 
-#### 📦 Wymagania:
+### 📦 Wymagania:
+- Docker
+- Docker Compose
 
-- Docker + Docker Compose
-- Java 21 (dla kompilacji backendu)
-- Node.js + npm (dla kompilacji frontendu)
+🧰 **Krok po kroku:**
 
----
-
-#### 🧰 Krok po kroku:
+1. Przejdź do katalogu głównego projektu
+2. Uruchom aplikację:
 
 ```bash
-# 1. Zbuduj backend (.jar)
-cd backend/backend
-./gradlew build
-
-# 2. Zbuduj frontend (Vite)
-cd ../../frontend/frontend
-npm install
-npm run build
-
-# 3. Wróć do katalogu głównego projektu
-cd ../../
-
-# 4. Uruchom cały system przez Docker Compose
 docker-compose up --build
 ```
 
@@ -171,33 +157,20 @@ The application allows full management of flight reservations — creation, modi
 
 ---
 
-### 🚀 How to run the app locally (Docker)
+## 🚀 How to Run the Application Locally (Docker)
 
-#### 📦 Requirements:
+### 📦 Requirements:
+- Docker
+- Docker Compose
 
-- Docker + Docker Compose  
-- Java 21 (for building the backend)  
-- Node.js + npm (for building the frontend)
+🧰 **Step-by-step:**
 
----
-
-#### 🧰 Step-by-step:
+1. Navigate to the root directory of the project
+2. Start the application:
 
 ```bash
-# 1. Build backend (.jar)
-cd backend/backend
-./gradlew build
-
-# 2. Build frontend (Vite)
-cd ../../frontend/frontend
-npm install
-npm run build
-
-# 3. Go back to project root
-cd ../../
-
-# 4. Start the whole system using Docker Compose
 docker-compose up --build
+
 ```
 
 ---
