@@ -15,7 +15,6 @@ services:
       SPRING_MAIL_USERNAME: test.sender.filghts.project@gmail.com
       SPRING_MAIL_PASSWORD: esjwfuudxnvywyha
 
-
   frontend:
     build:
       context: ./frontend/frontend
@@ -29,3 +28,4 @@ services:
 
 networks:
   appnet:
+

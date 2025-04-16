@@ -1,7 +1,11 @@
-# Dockerfile (backend)
+FROM gradle:8.4-jdk21 AS builder
+WORKDIR /app
+COPY . .
+RUN ./gradlew clean build -x test
 FROM openjdk:21-jdk-slim
 WORKDIR /app
-COPY build/libs/*.jar app.jar
+COPY --from=builder /app/build/libs/*.jar app.jar
 COPY data/ /app/data/
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
